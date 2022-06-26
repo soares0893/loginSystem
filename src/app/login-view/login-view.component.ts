@@ -1,3 +1,5 @@
+import { UserInterface } from './userInterface';
+import { LoginServiceService } from './login-service.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,20 +9,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginViewComponent implements OnInit {
 
-  email:String = "";
+  usersArray:UserInterface[] = [];
+
+  email:String = "admin@admin.com";
   password:String = "";
 
-  constructor() { }
+  constructor(private loginService: LoginServiceService) { }
 
   ngOnInit(): void {
   }
 
   login(){
-    if(this.email != "" && this.password != ""){
-      
-    } else {
-      alert("Preencha todos os campos!");
-    }
+    this.loginService.getByEmail(this.email).subscribe(users => {
+      if(this.email == users[0].email && this.password == users[0].password ){
+        alert("Login realizado com sucesso!")
+      } else {
+        alert("Dados inválidos!")
+      }
+    });    
+
   }
 
   forgotPassword(){

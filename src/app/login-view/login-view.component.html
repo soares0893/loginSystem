@@ -5,15 +5,15 @@
 
         <label for="email">
             <span class="input-icon">👤</span>
-            <input type="email" id="email" placeholder="E-mail ID">
+            <input type="email" id="email" [(ngModel)]="email" placeholder="E-mail ID">
         </label>
 
         <label for="password">
             <span class="input-icon">🔐</span>
-            <input type="password" id="password" placeholder="E-mail ID">
+            <input type="password" id="password" [(ngModel)]="password" placeholder="E-mail ID">
         </label>
 
-        <button>LOGIN</button>
+        <button (click)="login()">LOGIN</button>
 
         <div id="span-link-div">
             <span class="span-link">Forgot password?</span>
